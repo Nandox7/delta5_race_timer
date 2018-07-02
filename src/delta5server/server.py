@@ -1134,3 +1134,4 @@ INTERFACE.set_trigger_threshold_global(tune_val.t_threshold)
 
 
 if __name__ == '__main__':
+    SOCKET_IO.run(APP, host='0.0.0.0', port=80, debug=True)
