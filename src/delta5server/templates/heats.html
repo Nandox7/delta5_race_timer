@@ -10,12 +10,13 @@
 		<h3>Heat {{ heat.heat_id }}</h3>
 		<ol>
 			{% for node in range(num_nodes) %}
+			{% if (heats.query.filter_by( heat_id = heat.heat_id, node_index = node).first().pilot_id) != 0 %}
 			<li>
 				<div class="channel-block"><span class="ch">{{ channels[node] }}</span> <span class="fr">{{ frequencies[node] }}</span></div>
-
 				<div class="pilot-name">{{ pilots.query.filter_by(pilot_id= heats.query.filter_by(heat_id=heat.heat_id,node_index=node).first().pilot_id ).first().callsign
 					}}</div>
 			</li>
+			{% endif %}
 			{% endfor %}
 		</ol>
 	</li>

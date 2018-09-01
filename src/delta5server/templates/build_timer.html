@@ -5,7 +5,8 @@
 		var status = 0; // Stopped is 0, running is 1
 		var timer_id; // Used by setInterval function
 
-		var buzzer = $('buzzer')[0]; // Buzzer audio tag is loaded on race page already
+		var race_start = $('race_start')[0]; // Buzzer audio tag is loaded on race page already
+		var race_end = $('race_end')[0]; // Buzzer audio tag is loaded on race page already
 
 		// Start the timer
 		this.start = function () {
@@ -82,7 +83,7 @@
 		function (time) {
 			if (timer.getMode() == 0) { // Count down clock
 				if (time == 0) {
-					buzzer.play();
+					race_end.play();
 					timer.stop();
 				} // End up race buzzer
 
@@ -94,12 +95,12 @@
 					speak('<div class="timer">5 seconds</div>');
 				}
 
-				if (time == {{race_format.race_time_sec}}) { buzzer.play(); } // Start buzzer
+				if (time == {{race_format.race_time_sec}}) { race_start.play(); } // Start buzzer
 			}
 
 			if (timer.getMode() == 1) { // Count up clock
 				if (time == 0) {
-					buzzer.play();
+					race_start.play();
 				} // Start buzzer
 				if (time == 120) {
 					speak('<div class="timer">2 minutes</div>');

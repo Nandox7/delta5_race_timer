@@ -1,5 +1,7 @@
 {% extends "layout.html" %} {% block title %}Run{% endblock %}{% block head %}
-<audio id="buzzer" src="./static/audio/buzzer.mp3" type="audio/mp3"></audio>
+<audio id="race_start" src="./static/audio/race_start.mp3" type="audio/mp3"></audio>
+<audio id="race_end" src="./static/audio/race_end.mp3" type="audio/mp3"></audio>
+<audio id="lap" src="./static/audio/lap.mp3" type="audio/mp3"></audio>
 
 <script type="text/javascript" charset="utf-8">
 	$(document).ready(function () {
@@ -145,7 +147,7 @@
 		socket.on('start_timer', function (msg) {
 			if ({{race_format.race_mode}}) {
 				// Count up mode
-				timer.reset(-1); // Stop and reset with -1 seconds to catch buzzer
+				timer.reset(5); // Stop and reset with -1 seconds to catch buzzer
 			} else {
 				timer.reset({{race_format.race_time_sec+1}});
 				// 0 = Count down mode

@@ -146,22 +146,5 @@
 	{% endfor %}
 </div>
 
-<!--Voice Settings (page-local)-->
-<div class="voice-settings">
-	<ol class="form">
-		<li>
-			<div class="label-block">
-				<label for="voice-calls">Voice Calls</label>
-			</div>
-			<select id="voice-calls">
-				<option value="-1">None</option>
-				<option value="0">All</option>
-				{% for pilot in pilots.query.order_by(pilots.name).all() %} {% if pilot.pilot_id != 0 %}
-					<option value="{{ pilot.pilot_id }}">{{ pilot.callsign }} ({{ pilot.name }})</option>
-				{% endif %} {% endfor %}
-			</select>
-		</li>
-	</ol>
-</div>
 </main>
 {% endblock %}
