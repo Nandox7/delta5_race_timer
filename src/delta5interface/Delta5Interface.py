@@ -1,6 +1,6 @@
 '''Delta 5 hardware interface layer.'''
 
-import smbus # For i2c comms
+import smbus2 # For i2c comms
 import gevent # For threads and timing
 from gevent.lock import BoundedSemaphore # To limit i2c calls
 
@@ -71,7 +71,7 @@ class Delta5Interface(BaseHardwareInterface):
         self.pass_record_callback = None # Function added in server.py
         self.hardware_log_callback = None # Function added in server.py
 
-        self.i2c = smbus.SMBus(1) # Start i2c bus
+        self.i2c = smbus2.SMBus(1) # Start i2c bus
         self.semaphore = BoundedSemaphore(1) # Limits i2c to 1 read/write at a time
         self.i2c_timestamp = -1
 
